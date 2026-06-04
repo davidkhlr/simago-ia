@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digest Veille Concurrentielle — Semaine du 19 au 25 mai 2026</title>
+  <style>
+    :root {
+      --primary: #1a3a5c;
+      --primary-light: #2563a8;
+      --accent: #e8f0f8;
+      --green: #16a34a;
+      --green-bg: #dcfce7;
+      --yellow: #ca8a04;
+      --yellow-bg: #fef9c3;
+      --red: #dc2626;
+      --red-bg: #fee2e2;
+      --gray: #6b7280;
+      --gray-light: #f3f4f6;
+      --border: #e5e7eb;
+      --text: #111827;
+      --text-light: #374151;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f0f4f8;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ─── Header ─── */
+    .header {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2563a8 100%);
+      color: white;
+      padding: 36px 40px;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .header-logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .header-badge {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .header-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .header-subtitle {
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 28px;
+    }
+    .header-stats {
+      display: flex;
+      gap: 32px;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .stat-num.red { color: #fca5a5; }
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+
+    /* ─── Container ─── */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    /* ─── Section Title ─── */
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gray);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── Alert Banners ─── */
+    .alert-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border-left: 4px solid;
+    }
+    .alert-banner.red {
+      background: var(--red-bg);
+      border-color: var(--red);
+    }
+    .alert-banner.yellow {
+      background: var(--yellow-bg);
+      border-color: var(--yellow);
+    }
+    .alert-banner.green {
+      background: var(--green-bg);
+      border-color: var(--green);
+    }
+    .alert-icon { font-size: 22px; flex-shrink: 0; }
+    .alert-title { font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+    .alert-desc { font-size: 13px; color: var(--text-light); }
+
+    /* ─── Synthèse Grid ─── */
+    .synthese-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 600px) { .synthese-grid { grid-template-columns: 1fr; } }
+
+    .cc-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    .cc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .cc-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--primary);
+    }
+    .cc-desc { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+    .status-badge {
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .status-badge.green { background: var(--green-bg); color: var(--green); }
+    .status-badge.yellow { background: var(--yellow-bg); color: var(--yellow); }
+    .status-badge.red { background: var(--red-bg); color: var(--red); }
+
+    .threat-label {
+      font-size: 11px;
+      color: var(--gray);
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .threat-bar-bg {
+      height: 6px;
+      background: var(--gray-light);
+      border-radius: 3px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .threat-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+    .threat-bar-fill.green { background: var(--green); }
+    .threat-bar-fill.yellow { background: var(--yellow); }
+    .threat-bar-fill.red { background: var(--red); }
+
+    .cc-news-item {
+      font-size: 12.5px;
+      color: var(--text-light);
+      margin-bottom: 5px;
+      display: flex;
+      gap: 6px;
+    }
+    .cc-bullet { color: var(--primary-light); font-weight: 700; flex-shrink: 0; }
+
+    .cc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 10px; }
+    .cc-tag {
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .cc-tag.threat { background: var(--red-bg); color: var(--red); }
+    .cc-tag.opportunity { background: var(--green-bg); color: var(--green); }
+    .cc-tag.neutral { background: var(--gray-light); color: var(--gray); }
+
+    .cc-response {
+      font-size: 12px;
+      color: var(--primary);
+      background: var(--accent);
+      border-radius: 8px;
+      padding: 10px 12px;
+      border-left: 3px solid var(--primary-light);
+      margin-top: 8px;
+      font-style: italic;
+    }
+    .cc-response-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary-light);
+      margin-bottom: 4px;
+      font-style: normal;
+    }
+
+    /* ─── Tendances ─── */
+    .tendances-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 700px) { .tendances-grid { grid-template-columns: 1fr; } }
+
+    .tendance-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .tendance-icon { font-size: 28px; margin-bottom: 10px; }
+    .tendance-title { font-weight: 700; font-size: 13px; color: var(--primary); margin-bottom: 6px; }
+    .tendance-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+    /* ─── Recommandations ─── */
+    .recos-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .reco-item {
+      display: flex;
+      gap: 16px;
+      background: white;
+      border-radius: 12px;
+      padding: 18px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .reco-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .reco-priority {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .reco-priority.haute { background: var(--red-bg); color: var(--red); }
+    .reco-priority.moyenne { background: var(--yellow-bg); color: var(--yellow); }
+    .reco-priority.info { background: var(--accent); color: var(--primary-light); }
+    .reco-text { font-size: 13px; color: var(--text-light); }
+    .reco-text strong { color: var(--text); }
+
+    /* ─── Footer ─── */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 11px;
+      color: var(--gray);
+      border-top: 1px solid var(--border);
+      background: white;
+    }
+    .footer strong { color: var(--primary); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ HEADER ═══ -->
+<div class="header">
+  <div class="header-top">
+    <div class="header-logo">🩻 Réseau Simago — Radar Concurrentiel</div>
+    <div class="header-badge">🤖 Généré automatiquement</div>
+  </div>
+  <div class="header-title">Digest de Veille Hebdomadaire</div>
+  <div class="header-subtitle">Semaine du 19 au 25 mai 2026 &nbsp;·&nbsp; Imagerie médicale France</div>
+  <div class="header-stats">
+    <div class="stat-item">
+      <div class="stat-num red">2</div>
+      <div class="stat-label">Alertes</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">11</div>
+      <div class="stat-label">Actualités</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Recommandations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Concurrents</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ═══ ALERTES ═══ -->
+  <div class="section-title">🚨 Alertes de la semaine</div>
+  <div style="margin-bottom: 32px;">
+
+    <div class="alert-banner red">
+      <div class="alert-icon">🔴</div>
+      <div>
+        <div class="alert-title">Résonance Imagerie — Expansion très agressive en Île-de-France</div>
+        <div class="alert-desc">Nouveau DG David Corcos (ex-Philips France) en poste depuis janv. 2026 + plan 30 M€ d'équipements + acquisition CIMPVO Val-d'Oise. Le groupe dépasse 150 M€ de CA. Dynamique de croissance externe à surveiller de près.</div>
+      </div>
+    </div>
+
+    <div class="alert-banner yellow">
+      <div class="alert-icon">⚠️</div>
+      <div>
+        <div class="alert-title">FIT — Alliance TéléDiag + pression tarifaire institutionnelle</div>
+        <div class="alert-desc">FIT intègre TéléDiag dans son réseau et accentue son lobbying sur le PLFSS 2026 (webinaire jan. 2026, amendement PLFSS obtenu). Soutien renforcé du Crédit Agricole (IDIA). Montée en puissance sur les territoires sous-dotés.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ SYNTHÈSE CONCURRENTS ═══ -->
+  <div class="section-title">📊 Synthèse concurrentielle</div>
+  <div class="synthese-grid">
+
+    <!-- FIT -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div>
+          <div class="cc-name">FIT — France Imageries Territoires</div>
+          <div class="cc-desc">Réseau national · 400+ radiologues · Télé-radiologie</div>
+        </div>
+        <span class="status-badge yellow">Vigilance</span>
+      </div>
+      <div class="threat-label">
+        <span>Score de menace</span>
+        <span><strong>3</strong>/5</span>
+      </div>
+      <div class="threat-bar-bg">
+        <div class="threat-bar-fill yellow" style="width:60%"></div>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Intégration de TéléDiag au sein du réseau FIT pour couvrir la télé-radiologie nationale (Docteur Imago, 2025-2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Soutien du Crédit Agricole (IDIA CI) à la dernière augmentation de capital de FIT (IDIA, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Webinaire anti-baisses tarifaires PLFSS 2026 organisé en janv. 2026 + amendement obtenu (Thema Radiologie, jan. 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Recrutement radiologues actif : postes ouverts à Rambouillet et La Réunion (Jooble, mai 2026)</div>
+      <div class="cc-tags">
+        <span class="cc-tag threat">Expansion territoriale</span>
+        <span class="cc-tag threat">Lobbying institutionnel</span>
+        <span class="cc-tag neutral">Recrutement actif</span>
+      </div>
+      <div class="cc-response">
+        <div class="cc-response-label">Angle de réponse Simago</div>
+        Renforcer la présence Simago dans les territoires ciblés par FIT, notamment les zones sous-dotées. Valoriser la proximité médicale et la qualité de suivi patient comme avantage différenciateur face au modèle national FIT.
+      </div>
+    </div>
+
+    <!-- Résonance -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div>
+          <div class="cc-name">Résonance Imagerie</div>
+          <div class="cc-desc">Île-de-France · 44 centres · 9 départements · +150 M€ CA</div>
+        </div>
+        <span class="status-badge red">Alerte</span>
+      </div>
+      <div class="threat-label">
+        <span>Score de menace</span>
+        <span><strong>4</strong>/5</span>
+      </div>
+      <div class="threat-bar-bg">
+        <div class="threat-bar-fill red" style="width:80%"></div>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Nomination de David Corcos (ex-DG Philips France & Philips Imaging Europe) comme nouveau Directeur Général au 1er janv. 2026 (GRI, janv. 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Plan d'investissement 30 M€ sur 2025-2026 : 20 IRM IA nouvelle génération, 11 scanners, 10 échographes, 10 tables radio (Docteur Imago, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Acquisition de CIMPVO (Centres des Portes du Val-d'Oise) — croissance externe continue soutenue par Andera Partners (GRI, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Ouverture du centre d'imagerie de Serris (Seine-et-Marne) — maillage territorial Île-de-France (GRI, 2026)</div>
+      <div class="cc-tags">
+        <span class="cc-tag threat">Investissement massif</span>
+        <span class="cc-tag threat">Profil DG tech/industrie</span>
+        <span class="cc-tag threat">Acquisitions multiples</span>
+      </div>
+      <div class="cc-response">
+        <div class="cc-response-label">Angle de réponse Simago</div>
+        L'arrivée d'un profil tech (ex-Philips) à la tête de Résonance signale une accélération sur l'IA et le digital. Simago doit accélérer sur la différenciation par la qualité médicale, la gouvernance radiologiste et l'expérience patient — là où les groupes financiarisés sont plus vulnérables.
+      </div>
+    </div>
+
+    <!-- Imapôle -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div>
+          <div class="cc-name">Imapôle</div>
+          <div class="cc-desc">Ancrage régional · Lyon / Villeurbanne / Décines</div>
+        </div>
+        <span class="status-badge green">Stable</span>
+      </div>
+      <div class="threat-label">
+        <span>Score de menace</span>
+        <span><strong>2</strong>/5</span>
+      </div>
+      <div class="threat-bar-bg">
+        <div class="threat-bar-fill green" style="width:40%"></div>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Décision du Conseil d'État validant l'entrée des fonds non-médecins en imagerie — lève un frein juridique sur les partenariats institutionnels (CFNEWS, 2024-2025)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Activité courante sur les sites Lyon-Villeurbanne et Lyon-Décines sans annonce majeure de développement en mai 2026 (sites officiels, mai 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Secteur sous pression tarifaire : Imapôle, comme tous les acteurs, est exposé aux baisses PLFSS 2026 sur les actes techniques (FNMR/Thema Radiologie, 2026)</div>
+      <div class="cc-tags">
+        <span class="cc-tag neutral">Ancrage local fort</span>
+        <span class="cc-tag opportunity">Juridique stabilisé</span>
+        <span class="cc-tag neutral">Développement modéré</span>
+      </div>
+      <div class="cc-response">
+        <div class="cc-response-label">Angle de réponse Simago</div>
+        Imapôle reste stable et peu agressif nationalement. Opportunité pour Simago de consolider ses positions dans les zones géographiques communes en mettant en avant des partenariats de qualité et une réactivité organisationnelle supérieure.
+      </div>
+    </div>
+
+    <!-- Vidi -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div>
+          <div class="cc-name">Vidi</div>
+          <div class="cc-desc">75 groupes · 1 250+ radiologues · 400+ sites · Digital-first</div>
+        </div>
+        <span class="status-badge yellow">Vigilance</span>
+      </div>
+      <div class="threat-label">
+        <span>Score de menace</span>
+        <span><strong>3</strong>/5</span>
+      </div>
+      <div class="threat-bar-bg">
+        <div class="threat-bar-fill yellow" style="width:60%"></div>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Lancement de TéléVidi en partenariat avec CTM Groupe : solution de télé-radiologie de proximité pour les établissements de santé (Thema Radiologie, 2025)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Innovation pionnière : pilotage à distance d'IRM depuis Paris vers Quimper — 1ère en France, fort impact médiatique sectoriel (Thema Radiologie, 2025-2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Réseau de 850 radiologues mobilisables sur TéléVidi — couverture nationale nuit et week-end pour les cliniques et hôpitaux (Vidi.fr, 2026)</div>
+      <div class="cc-tags">
+        <span class="cc-tag threat">Innovation technologique</span>
+        <span class="cc-tag threat">Télé-radiologie agressive</span>
+        <span class="cc-tag opportunity">Positionnement distinctif</span>
+      </div>
+      <div class="cc-response">
+        <div class="cc-response-label">Angle de réponse Simago</div>
+        Vidi verrouille progressivement le positionnement "digital + télé-radiologie" dans les territoires. Simago doit clarifier et communiquer sa propre proposition de valeur numérique avant que ce terrain ne soit entièrement occupé.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ TENDANCES ═══ -->
+  <div class="section-title">📈 Tendances sectorielles</div>
+  <div class="tendances-grid">
+
+    <div class="tendance-card">
+      <div class="tendance-icon">💶</div>
+      <div class="tendance-title">Pression tarifaire PLFSS 2026</div>
+      <div class="tendance-desc">Les baisses des forfaits techniques pèsent sur toute la profession. Un arrêté du 6 mai 2026 ouvre des financements numériques compensatoires, mais la tension économique reste forte pour les groupes moins capitalisés.</div>
+    </div>
+
+    <div class="tendance-card">
+      <div class="tendance-icon">🖥️</div>
+      <div class="tendance-title">Accélération du numérique en santé</div>
+      <div class="tendance-desc">Le Ségur du numérique (DRIM-M) structure un réseau national de partage d'images. Les groupes capables d'intégrer ces standards rapidement gagneront en attractivité auprès des établissements hospitaliers partenaires.</div>
+    </div>
+
+    <div class="tendance-card">
+      <div class="tendance-icon">🏗️</div>
+      <div class="tendance-title">Consolidation et financiarisation</div>
+      <div class="tendance-desc">Le Conseil d'État a validé l'entrée des fonds non-médecins. La consolidation s'accélère : Résonance, FIT, Vidi renforcent tous leur maillage. La taille critique devient un enjeu de survie à moyen terme.</div>
+    </div>
+
+  </div>
+
+  <!-- ═══ RECOMMANDATIONS ═══ -->
+  <div class="section-title">🎯 Recommandations actionnables</div>
+  <div class="recos-list">
+
+    <div class="reco-item">
+      <div class="reco-num">1</div>
+      <div>
+        <div class="reco-priority haute">Haute priorité</div>
+        <div class="reco-text"><strong>Surveiller et contrer Résonance Imagerie sur l'IA médicale :</strong> l'arrivée de David Corcos (ex-Philips Imaging Europe) va probablement accélérer l'adoption de l'IA dans les équipements de Résonance. Simago devrait capitaliser dès maintenant sur des cas d'usage IA concrets (réduction temps d'attente, aide au diagnostic) pour ne pas laisser Résonance occuper seule ce terrain de communication auprès des prescripteurs et patients.</div>
+      </div>
+    </div>
+
+    <div class="reco-item">
+      <div class="reco-num">2</div>
+      <div>
+        <div class="reco-priority haute">Haute priorité</div>
+        <div class="reco-text"><strong>Clarifier la proposition de valeur Simago sur la télé-radiologie avant que Vidi ne verrouille ce positionnement :</strong> TéléVidi est désormais opérationnel avec 850 radiologues disponibles. Simago doit soit communiquer clairement sur son propre modèle de télé-radiologie, soit positionner sa différence (qualité du lien ville/cabinet, suivi personnalisé) pour ne pas paraître en retard sur ce segment qui monte.</div>
+      </div>
+    </div>
+
+    <div class="reco-item">
+      <div class="reco-num">3</div>
+      <div>
+        <div class="reco-priority moyenne">Priorité moyenne</div>
+        <div class="reco-text"><strong>Exploiter le contexte PLFSS pour renforcer le message "efficience et valeur médicale" :</strong> dans un contexte de baisses tarifaires, les patients et prescripteurs sont plus attentifs au rapport qualité/accessibilité. Simago peut se positionner comme un réseau qui investit dans la qualité malgré la pression économique — à décliner dans les communications institutionnelles et sur les réseaux professionnels (FNMR, SFR).</div>
+      </div>
+    </div>
+
+    <div class="reco-item">
+      <div class="reco-num">4</div>
+      <div>
+        <div class="reco-priority info">Information</div>
+        <div class="reco-text"><strong>Surveiller les zones d'implantation FIT :</strong> FIT recrute à Rambouillet (Yvelines) et La Réunion. Vérifier si ces zones sont des marchés d'intérêt pour Simago et anticiper d'éventuels recouvrements géographiques à 12 mois. La prochaine augmentation de capital FIT (soutenue par IDIA/Crédit Agricole) peut accélérer leur développement territorial.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <strong>Réseau Simago</strong> — Digest de veille concurrentielle généré automatiquement le <strong>lundi 25 mai 2026</strong><br>
+  Sources : Docteur Imago · Thema Radiologie · CFNEWS · FNMR · Hospimedia · Sites officiels des groupes · LinkedIn<br>
+  <em>Les informations marquées "interprétation" sont des analyses de l'agent et non des faits sourcés directs. Document à usage interne uniquement.</em>
+</div>
+
+</body>
+</html>

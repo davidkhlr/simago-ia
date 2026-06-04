@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporting mensuel KPI — Réseau Simago — {{MOIS}} {{ANNEE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --medium:#00A69C; --dark:#006C5F; --light:#80D2CD; --beige:#F9F4E8;
+    --green:#0E9F6E; --green-bg:#E3F7EF;
+    --yellow:#C77700; --yellow-bg:#FCF1DC;
+    --red:#D8443C; --red-bg:#FBE7E5;
+    --ink:#10322E; --muted:#5C746F; --line:#E4ECEA; --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Epilogue',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:#EEF4F2; color:var(--ink); line-height:1.55; -webkit-font-smoothing:antialiased;}
+  .page{max-width:1040px; margin:0 auto; padding:28px 18px 60px;}
+  .header{background:linear-gradient(135deg,var(--dark) 0%,var(--medium) 100%);
+    color:#fff; border-radius:18px; padding:34px 38px; position:relative; overflow:hidden;}
+  .header::after{content:''; position:absolute; right:-60px; top:-60px; width:240px; height:240px;
+    background:radial-gradient(circle,rgba(128,210,205,.35),transparent 70%);}
+  .header-top{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; position:relative; z-index:1;}
+  .brand{font-size:13px; font-weight:800; letter-spacing:3px; text-transform:uppercase; opacity:.9;}
+  .brand small{display:block; font-size:10px; letter-spacing:2px; font-weight:600; opacity:.8; margin-top:3px;}
+  .badge{background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.32); border-radius:999px;
+    padding:5px 15px; font-size:12px; font-weight:600;}
+  .header h1{font-size:27px; font-weight:800; margin:18px 0 4px; position:relative; z-index:1;}
+  .header .subtitle{font-size:14px; opacity:.85; margin-bottom:24px; position:relative; z-index:1;}
+  .header-stats{display:flex; flex-wrap:wrap; gap:14px; position:relative; z-index:1;}
+  .stat{background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18); border-radius:12px;
+    padding:12px 18px; min-width:96px; text-align:center; flex:1;}
+  .stat .num{font-size:30px; font-weight:800; line-height:1;}
+  .stat .num.s-green{color:#B6F2D8;} .stat .num.s-yellow{color:#FFE0A6;} .stat .num.s-red{color:#FFC2BD;}
+  .stat .lbl{font-size:10px; text-transform:uppercase; letter-spacing:1.2px; opacity:.82; margin-top:5px;}
+  .score-pill{display:inline-flex; align-items:baseline; gap:4px;}
+  .score-pill b{font-size:30px; font-weight:800;} .score-pill span{font-size:13px; opacity:.85;}
+  .synthese{margin-top:20px; border-radius:16px; padding:22px 26px; border:1px solid var(--line);
+    background:var(--card); border-left:6px solid var(--medium);}
+  .synthese.green{border-left-color:var(--green);}
+  .synthese.yellow{border-left-color:var(--yellow);}
+  .synthese.red{border-left-color:var(--red);}
+  .synthese .tag{display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700;
+    text-transform:uppercase; letter-spacing:1.4px; padding:5px 12px; border-radius:999px; margin-bottom:12px;}
+  .synthese.green .tag{background:var(--green-bg); color:var(--green);}
+  .synthese.yellow .tag{background:var(--yellow-bg); color:var(--yellow);}
+  .synthese.red .tag{background:var(--red-bg); color:var(--red);}
+  .synthese p{font-size:14.5px; color:var(--ink);}
+  .section-title{font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:2px; color:var(--dark);
+    margin:30px 0 12px; display:flex; align-items:center; gap:10px;}
+  .section-title .cnt{background:var(--light); color:var(--dark); border-radius:999px; padding:2px 10px;
+    font-size:11px; font-weight:700; letter-spacing:.5px;}
+  .section-title::after{content:''; flex:1; height:2px; background:linear-gradient(90deg,var(--light),transparent);}
+  .kpi-table{background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden;}
+  .kpi-head, .kpi-row{display:grid; grid-template-columns:2.5fr 1fr 0.95fr 1.25fr 1.3fr 2fr;
+    align-items:center; gap:10px; padding:13px 18px;}
+  .kpi-head{background:var(--beige); font-size:10.5px; font-weight:700; text-transform:uppercase;
+    letter-spacing:1px; color:var(--muted);}
+  .kpi-row{border-top:1px solid var(--line); font-size:13.5px;}
+  .kpi-row:nth-child(even){background:#FAFCFB;}
+  .kpi-name{font-weight:600; color:var(--ink);}
+  .kpi-cible{color:var(--muted); font-size:12.5px;}
+  .kpi-valeur{font-weight:800; font-size:15px;}
+  .kpi-valeur.green{color:var(--green);} .kpi-valeur.yellow{color:var(--yellow);} .kpi-valeur.red{color:var(--red);}
+  .kpi-evol{font-size:12.5px; font-weight:600;}
+  .kpi-evol.up{color:var(--green);} .kpi-evol.down{color:var(--red);} .kpi-evol.stable{color:var(--muted);}
+  .kpi-status-pill{display:inline-flex; align-items:center; gap:6px; padding:4px 11px; border-radius:999px;
+    font-size:11.5px; font-weight:700;}
+  .kpi-status-pill.green{background:var(--green-bg); color:var(--green);}
+  .kpi-status-pill.yellow{background:var(--yellow-bg); color:var(--yellow);}
+  .kpi-status-pill.red{background:var(--red-bg); color:var(--red);}
+  .kpi-sdot{width:7px; height:7px; border-radius:50%; background:currentColor;}
+  .kpi-alert{font-size:12px; color:var(--muted);}
+  .kpi-alert.act{color:var(--red); font-weight:600;}
+  .recos{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px 22px 18px;}
+  .reco-item{display:flex; gap:16px; align-items:flex-start; padding:16px 0; border-top:1px solid var(--line);}
+  .reco-item:first-child{border-top:none;}
+  .reco-num{flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--medium); color:#fff;
+    font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:center; margin-top:2px;}
+  .reco-priority{display:inline-block; font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:1px;
+    padding:3px 10px; border-radius:999px; margin-bottom:6px;}
+  .reco-priority.haute{background:var(--red-bg); color:var(--red);}
+  .reco-priority.moyenne{background:var(--yellow-bg); color:var(--yellow);}
+  .reco-priority.info{background:var(--green-bg); color:var(--green);}
+  .reco-text{font-size:14px; color:var(--ink);}
+  .reco-text strong{color:var(--dark);}
+  .footer{margin-top:28px; padding:18px 22px; background:var(--beige); border-radius:12px;
+    font-size:11.5px; color:var(--muted); line-height:1.6;}
+  .footer b{color:var(--dark);}
+  @media print{body{background:#fff;} .page{padding:0; max-width:none;}
+    .kpi-table,.recos,.synthese,.header{break-inside:avoid;}}
+  @media(max-width:760px){.kpi-head{display:none;} .kpi-row{grid-template-columns:1fr 1fr; row-gap:6px;}
+    .kpi-name{grid-column:1/3; font-size:14px;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="brand">SIMAGO<small>Réseau d'imagerie médicale</small></div>
+      <div class="badge">Boussole · Reporting automatisé</div>
+    </div>
+    <h1>Reporting mensuel KPI — {{MOIS}} {{ANNEE}}</h1>
+    <div class="subtitle">Tableau de bord stratégique du Réseau Simago · préparé pour le CODIR</div>
+    <div class="header-stats">
+      <div class="stat"><div class="num">{{NB_KPIS}}</div><div class="lbl">Indicateurs</div></div>
+      <div class="stat"><div class="num s-green">{{NB_OK}}</div><div class="lbl">Dans la cible</div></div>
+      <div class="stat"><div class="num s-yellow">{{NB_VIGILANCE}}</div><div class="lbl">Vigilance</div></div>
+      <div class="stat"><div class="num s-red">{{NB_ALERTE}}</div><div class="lbl">Alerte</div></div>
+      <div class="stat"><div class="score-pill"><b>{{SCORE_GLOBAL}}</b><span>/10</span></div><div class="lbl">Score global</div></div>
+    </div>
+  </div>
+
+  <div class="synthese {{STATUT_GLOBAL_CLASS}}">
+    <span class="tag">● {{STATUT_GLOBAL}}</span>
+    <p>{{SYNTHESE_MESSAGE}}</p>
+  </div>
+
+  <div class="section-title">Expérience Patient <span class="cnt">{{NB_PATIENT}} KPIs</span></div>
+  <div class="kpi-table">
+    <div class="kpi-head"><div>Indicateur</div><div>Cible</div><div>Valeur</div><div>Évolution</div><div>Statut</div><div>Action requise</div></div>
+    {{KPI_PATIENT_ROWS}}
+  </div>
+
+  <div class="section-title">Qualité Médicale <span class="cnt">{{NB_QUALITE}} KPIs</span></div>
+  <div class="kpi-table">
+    <div class="kpi-head"><div>Indicateur</div><div>Cible</div><div>Valeur</div><div>Évolution</div><div>Statut</div><div>Action requise</div></div>
+    {{KPI_QUALITE_ROWS}}
+  </div>
+
+  <div class="section-title">RH &amp; Marque Employeur <span class="cnt">{{NB_RH}} KPIs</span></div>
+  <div class="kpi-table">
+    <div class="kpi-head"><div>Indicateur</div><div>Cible</div><div>Valeur</div><div>Évolution</div><div>Statut</div><div>Action requise</div></div>
+    {{KPI_RH_ROWS}}
+  </div>
+
+  <div class="section-title">Marketing &amp; Communication <span class="cnt">{{NB_MARKETING}} KPIs</span></div>
+  <div class="kpi-table">
+    <div class="kpi-head"><div>Indicateur</div><div>Cible</div><div>Valeur</div><div>Évolution</div><div>Statut</div><div>Action requise</div></div>
+    {{KPI_MARKETING_ROWS}}
+  </div>
+
+  <div class="section-title">Conformité &amp; Gouvernance <span class="cnt">{{NB_CONFORMITE}} KPIs</span></div>
+  <div class="kpi-table">
+    <div class="kpi-head"><div>Indicateur</div><div>Cible</div><div>Valeur</div><div>Évolution</div><div>Statut</div><div>Action requise</div></div>
+    {{KPI_CONFORMITE_ROWS}}
+  </div>
+
+  <div class="section-title">Recommandations priorisées</div>
+  <div class="recos">
+    {{RECOMMANDATIONS}}
+  </div>
+
+  <div class="footer">
+    <b>Méthode &amp; lecture.</b> Statut par indicateur : 🟢 Cible · 🟡 Vigilance · 🔴 Alerte. Score global = indicateurs dans la cible ÷ total × 10. Statut global : 0 alerte = bonne performance · 1–2 = vigilance requise · 3+ = actions urgentes.<br>
+    <b>Garde-fous Simago.</b> Aucune donnée patient ; valeurs agrégées et anonymisées. Relecture humaine requise avant diffusion CODIR.<br>
+    Généré par l'agent <b>Boussole</b> — Réseau Simago · {{DATE_GENERATION}}.
+  </div>
+
+</div>
+</body>
+</html>

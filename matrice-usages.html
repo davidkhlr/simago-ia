@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simago IA League — Usages par métier</title>
+<meta name="description" content="Pour chaque métier Simago : le besoin fréquent, l'agent à utiliser, et un prompt prêt à copier.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#00A69C;--green-dark:#006C5F;--green-light:#80D2CD;--beige:#F9F4E8;--ink:#1a2e2b;--mid:#3d5a56;--line:#e3ded2;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Epilogue','Segoe UI',system-ui,sans-serif;color:var(--ink);background:#d9d4c8;padding:24px;line-height:1.5;}
+  .page{max-width:1040px;margin:0 auto;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);border-radius:4px;overflow:hidden;}
+  header{background:linear-gradient(135deg,#0a2e28 0%,var(--green-dark) 100%);color:#fff;padding:30px 40px;}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green-light);font-weight:700;margin-bottom:8px;}
+  header h1{font-size:1.7rem;font-weight:800;letter-spacing:-.02em;}
+  header p{color:rgba(255,255,255,.72);font-size:.95rem;margin-top:6px;max-width:680px;}
+  .body{padding:28px 40px 36px;}
+  .intro{background:var(--beige);border-left:4px solid var(--green);padding:14px 18px;border-radius:0 8px 8px 0;font-size:.95rem;margin-bottom:24px;}
+  .intro strong{color:var(--green-dark);}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;}
+  th{text-align:left;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);font-weight:700;padding:10px 12px;border-bottom:2px solid var(--line);}
+  td{padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tr:hover td{background:#fafaf7;}
+  .metier{font-weight:700;color:var(--ink);white-space:nowrap;}
+  .besoin{color:var(--mid);}
+  .agent{display:inline-block;background:rgba(0,166,156,.1);color:var(--green-dark);font-weight:700;font-size:.8rem;padding:3px 9px;border-radius:20px;}
+  .soon{background:rgba(0,0,0,.05);color:var(--mid);}
+  .prompt{color:var(--ink);font-style:italic;font-size:.86rem;max-width:360px;}
+  .copy{margin-top:8px;background:var(--green-dark);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-family:inherit;font-size:.78rem;font-weight:700;cursor:pointer;}
+  .copy:hover{background:var(--green);}
+  footer{padding:16px 40px 26px;font-size:.78rem;color:var(--mid);border-top:1px solid var(--line);line-height:1.5;}
+  footer b{color:var(--green-dark);}
+  @media(max-width:760px){
+    body{padding:0;} .body,header,footer{padding-left:20px;padding-right:20px;}
+    table,thead,tbody,tr,td,th{display:block;} thead{display:none;}
+    tr{border-bottom:2px solid var(--line);padding:10px 0;}
+    td{border:none;padding:4px 0;} .prompt{max-width:none;}
+    .metier{font-size:1.05rem;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="eyebrow">Simago IA League · Prise en main</div>
+    <h1>Usages par métier — que faire concrètement ?</h1>
+    <p>Pour chaque fonction : le besoin le plus fréquent, l'agent à utiliser, et un prompt prêt à copier. Réponse à la question « moi, dans mon rôle, qu'est-ce que je fais demain matin ? »</p>
+  </header>
+  <div class="body">
+    <div class="intro"><strong>Comment s'en servir :</strong> trouvez votre ligne, cliquez sur <strong>Copier</strong>, collez le prompt dans Claude. L'agent se déclenche. Relisez toujours avant diffusion (garde-fous santé).</div>
+    <table>
+      <thead>
+        <tr><th>Métier</th><th>Besoin fréquent</th><th>Agent</th><th>Prompt prêt à copier</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="metier">Marketing &amp; Com</td><td class="besoin">Post LinkedIn</td><td><span class="agent">Plume + Garde-fous</span></td>
+          <td><div class="prompt">« Rédige un post LinkedIn pour annoncer l'ouverture de notre centre d'imagerie à [ville], ton chaleureux, audience grand public. »</div><button class="copy" data-p="Rédige un post LinkedIn pour annoncer l'ouverture de notre centre d'imagerie à [ville], ton chaleureux, audience grand public.">Copier</button></td>
+        </tr>
+        <tr>
+          <td class="metier">Marketing &amp; Com</td><td class="besoin">Veille / battlecard</td><td><span class="agent">Radar</span></td>
+          <td><div class="prompt">« Fais une battlecard sur FIT : forces, faiblesses et angles de différenciation pour Simago. »</div><button class="copy" data-p="Fais une battlecard sur FIT : forces, faiblesses et angles de différenciation pour Simago.">Copier</button></td>
+        </tr>
+        <tr>
+          <td class="metier">Direction</td><td class="besoin">Note CODIR</td><td><span class="agent">Boussole</span></td>
+          <td><div class="prompt">« Analyse ces KPIs et prépare une note de décision pour le CODIR avec 3 recommandations priorisées. »</div><button class="copy" data-p="Analyse ces KPIs et prépare une note de décision pour le CODIR avec 3 recommandations priorisées.">Copier</button></td>
+        </tr>
+        <tr>
+          <td class="metier">RH</td><td class="besoin">Annonce de recrutement</td><td><span class="agent">Plume</span></td>
+          <td><div class="prompt">« Crée une annonce pour recruter un radiologue à [ville], en valorisant l'environnement et les équipements Simago. »</div><button class="copy" data-p="Crée une annonce pour recruter un radiologue à [ville], en valorisant l'environnement et les équipements Simago.">Copier</button></td>
+        </tr>
+        <tr>
+          <td class="metier">Comptabilité</td><td class="besoin">Synthèse d'écarts</td><td><span class="agent">Boussole</span></td>
+          <td><div class="prompt">« Analyse ces écarts budgétaires du mois et résume les 5 points d'attention prioritaires. »</div><button class="copy" data-p="Analyse ces écarts budgétaires du mois et résume les 5 points d'attention prioritaires.">Copier</button></td>
+        </tr>
+        <tr>
+          <td class="metier">M&amp;A - Business Dev.</td><td class="besoin">Préparation de RDV</td><td><span class="agent">Radar + Plume</span></td>
+          <td><div class="prompt">« Prépare une fiche sur [établissement/correspondant] avant mon rendez-vous : actualités, décideurs, angles de discussion. »</div><button class="copy" data-p="Prépare une fiche sur [établissement/correspondant] avant mon rendez-vous : actualités, décideurs, angles de discussion.">Copier</button></td>
+        </tr>
+        <tr>
+          <td class="metier">Événementiel</td><td class="besoin">Brief &amp; rétroplanning</td><td><span class="agent">Plume / Pixel</span></td>
+          <td><div class="prompt">« Crée un rétroplanning et un brief prestataires pour notre stand au congrès [X]. »</div><button class="copy" data-p="Crée un rétroplanning et un brief prestataires pour notre stand au congrès [X].">Copier</button></td>
+        </tr>
+        <tr>
+          <td class="metier">Juridique</td><td class="besoin">Relecture de contrat</td><td><span class="agent soon">Garde-fous + juriste</span></td>
+          <td><div class="prompt">« Repère les clauses sensibles de ce contrat prestataire (responsabilité, RGPD, résiliation). » <em>Relecture humaine obligatoire.</em></div><button class="copy" data-p="Repère les clauses sensibles de ce contrat prestataire (responsabilité, RGPD, résiliation).">Copier</button></td>
+        </tr>
+        <tr>
+          <td class="metier">IT / DSI</td><td class="besoin">Procédure / documentation</td><td><span class="agent soon">Plume (agents IT à venir)</span></td>
+          <td><div class="prompt">« Rédige une procédure claire et pas à pas pour [tâche], à destination des centres. »</div><button class="copy" data-p="Rédige une procédure claire et pas à pas pour [tâche], à destination des centres.">Copier</button></td>
+        </tr>
+        <tr>
+          <td class="metier">Tous</td><td class="besoin">Créer un nouvel usage</td><td><span class="agent">Fabrique de cas d'usage</span></td>
+          <td><div class="prompt">« Voici un irritant de mon quotidien : [décris-le]. Transforme-le en cas d'usage IA avec fiche de cadrage et plan pilote. »</div><button class="copy" data-p="Voici un irritant de mon quotidien : [décris-le]. Transforme-le en cas d'usage IA avec fiche de cadrage et plan pilote.">Copier</button></td>
+        </tr>
+        <tr>
+          <td class="metier">Tous</td><td class="besoin">Vérifier avant diffusion</td><td><span class="agent">Garde-fous</span></td>
+          <td><div class="prompt">« Vérifie ce contenu avant diffusion externe : conformité santé, charte Simago, sources. »</div><button class="copy" data-p="Vérifie ce contenu avant diffusion externe : conformité santé, charte Simago, sources.">Copier</button></td>
+        </tr>
+        <tr>
+          <td class="metier">Débutant</td><td class="besoin">Je ne sais pas quel agent</td><td><span class="agent">Chef d'orchestre</span></td>
+          <td><div class="prompt">« Décris simplement ton besoin en français — Claude t'oriente vers le bon agent automatiquement. »</div><button class="copy" data-p="Décris ton besoin en langage normal et oriente-moi vers le bon agent Simago.">Copier</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>
+    <b>Rappel :</b> ces prompts s'utilisent dans Claude (avec le plugin Simago IA installé). L'IA propose, l'humain valide — rien ne sort sans relecture. Les agents marqués « à venir » seront livrés au fil de la roadmap (RH, Compta, IT, M&amp;A, Direction, Événementiel, Juridique).
+    <br><br>Simago IA League · David Kohler · david.kohler@groupe-simago.com
+  </footer>
+</div>
+<script>
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      navigator.clipboard.writeText(b.dataset.p);
+      var o=b.textContent; b.textContent='✓ Copié'; setTimeout(function(){b.textContent=o;},1500);
+    });
+  });
+</script>
+</body>
+</html>

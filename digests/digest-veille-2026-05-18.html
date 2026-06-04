@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digest Veille Concurrentielle — Réseau Simago — 11 au 17 mai 2026</title>
+  <style>
+    :root {
+      --color-bg: #f4f6fb;
+      --color-card: #ffffff;
+      --color-primary: #1a3a6b;
+      --color-accent: #2563eb;
+      --color-green: #16a34a;
+      --color-green-bg: #dcfce7;
+      --color-yellow: #ca8a04;
+      --color-yellow-bg: #fef9c3;
+      --color-red: #dc2626;
+      --color-red-bg: #fee2e2;
+      --color-text: #1e293b;
+      --color-muted: #64748b;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      padding: 24px;
+    }
+
+    /* HEADER */
+    .digest-header {
+      background: linear-gradient(135deg, #1a3a6b 0%, #2563eb 100%);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+      color: white;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .digest-header h1 { font-size: 1.7rem; font-weight: 700; margin-bottom: 4px; }
+    .digest-header .subtitle { font-size: 0.95rem; opacity: 0.8; }
+    .digest-header .meta { font-size: 0.85rem; opacity: 0.7; margin-top: 8px; }
+    .header-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+    .stat-pill {
+      background: rgba(255,255,255,0.18);
+      border-radius: 30px;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .stat-pill .num { font-size: 1.8rem; font-weight: 700; line-height: 1; }
+    .stat-pill .label { font-size: 0.75rem; opacity: 0.85; margin-top: 2px; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 28px; }
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-left: 4px solid var(--color-accent);
+      padding-left: 12px;
+      margin-bottom: 16px;
+    }
+
+    /* ALERT BANNERS */
+    .alert-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 20px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border-left: 5px solid transparent;
+    }
+    .alert-banner.red { background: var(--color-red-bg); border-color: var(--color-red); }
+    .alert-banner.yellow { background: var(--color-yellow-bg); border-color: var(--color-yellow); }
+    .alert-banner.green { background: var(--color-green-bg); border-color: var(--color-green); }
+    .alert-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+    .alert-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
+    .alert-desc { font-size: 0.875rem; color: var(--color-muted); }
+
+    /* SYNTHÈSE GRID */
+    .synthesis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .synthesis-card {
+      background: var(--color-card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      border-top: 4px solid #e2e8f0;
+    }
+    .synthesis-card.green { border-top-color: var(--color-green); }
+    .synthesis-card.yellow { border-top-color: var(--color-yellow); }
+    .synthesis-card.red { border-top-color: var(--color-red); }
+    .synth-competitor { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+    .synth-status {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .synth-status.green { background: var(--color-green-bg); color: var(--color-green); }
+    .synth-status.yellow { background: var(--color-yellow-bg); color: var(--color-yellow); }
+    .synth-status.red { background: var(--color-red-bg); color: var(--color-red); }
+    .score-label { font-size: 0.75rem; color: var(--color-muted); margin-bottom: 4px; }
+    .score-bar { height: 7px; background: #e2e8f0; border-radius: 10px; overflow: hidden; margin-bottom: 6px; }
+    .score-fill { height: 100%; border-radius: 10px; background: var(--color-accent); }
+    .score-fill.green { background: var(--color-green); }
+    .score-fill.yellow { background: var(--color-yellow); }
+    .score-fill.red { background: var(--color-red); }
+    .score-num { font-size: 0.8rem; color: var(--color-muted); font-weight: 600; }
+
+    /* COMPETITOR CARDS */
+    .cc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .cc-card {
+      background: var(--color-card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .cc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .cc-name { font-weight: 700; font-size: 1rem; color: var(--color-primary); }
+    .cc-news-item {
+      display: flex;
+      gap: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .cc-bullet { color: var(--color-accent); flex-shrink: 0; font-weight: 700; }
+    .cc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+    .cc-tag {
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .cc-tag.threat { background: var(--color-red-bg); color: var(--color-red); }
+    .cc-tag.opportunity { background: var(--color-green-bg); color: var(--color-green); }
+    .cc-tag.neutral { background: #f1f5f9; color: var(--color-muted); }
+    .cc-response-label { font-size: 0.75rem; color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+    .cc-response { font-size: 0.85rem; font-style: italic; color: var(--color-text); border-left: 3px solid var(--color-accent); padding-left: 10px; }
+
+    /* TENDANCES */
+    .tendances-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .tendance-card {
+      background: var(--color-card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+    .tendance-icon { font-size: 2rem; margin-bottom: 10px; }
+    .tendance-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; color: var(--color-primary); }
+    .tendance-desc { font-size: 0.83rem; color: var(--color-muted); line-height: 1.5; }
+
+    /* RECOMMANDATIONS */
+    .reco-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--color-card);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .reco-num {
+      background: var(--color-accent);
+      color: white;
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .reco-priority {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .reco-priority.haute { background: var(--color-red-bg); color: var(--color-red); }
+    .reco-priority.moyenne { background: var(--color-yellow-bg); color: var(--color-yellow); }
+    .reco-priority.info { background: #eff6ff; color: var(--color-accent); }
+    .reco-text { font-size: 0.875rem; line-height: 1.5; }
+
+    /* FOOTER */
+    .digest-footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- EN-TÊTE -->
+<div class="digest-header">
+  <div>
+    <div class="subtitle">🏥 Réseau Simago — Veille Concurrentielle</div>
+    <h1>Digest Hebdomadaire</h1>
+    <div class="subtitle">Semaine du 11 au 17 mai 2026</div>
+    <div class="meta">Généré automatiquement le lundi 18 mai 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill">
+      <div class="num">2</div>
+      <div class="label">Alertes</div>
+    </div>
+    <div class="stat-pill">
+      <div class="num">14</div>
+      <div class="label">Actualités</div>
+    </div>
+    <div class="stat-pill">
+      <div class="num">4</div>
+      <div class="label">Recommandations</div>
+    </div>
+  </div>
+</div>
+
+<!-- ALERTES -->
+<div class="section">
+  <div class="section-title">🚨 Alertes de la semaine</div>
+
+  <div class="alert-banner red">
+    <div class="alert-icon">⚠️</div>
+    <div>
+      <div class="alert-title">Baisses tarifaires : -10 % au 1ᵉʳ juillet 2026</div>
+      <div class="alert-desc">La deuxième tranche de réduction des forfaits techniques (scanner, IRM, TEP) entre en vigueur dans 6 semaines. Après -8 % en novembre 2025, cette nouvelle coupe pèsera sur les marges de tous les acteurs libéraux. La FNMR maintient la pression sur le gouvernement. Impact direct sur la rentabilité et les plans d'investissement des concurrents. (Source : Docteur Imago, mai 2026)</div>
+    </div>
+  </div>
+
+  <div class="alert-banner yellow">
+    <div class="alert-icon">⚠️</div>
+    <div>
+      <div class="alert-title">FIT intensifie son recrutement : 182 offres actives en avril 2026</div>
+      <div class="alert-desc">France Imageries Territoires affiche plus de 182 offres d'emploi sur Indeed (relevé au 3 avril 2026), signal fort d'une stratégie d'expansion soutenue par le Crédit Agricole. Ce recrutement massif peut accentuer la tension sur le marché des radiologues et personnels para-médicaux, au détriment des réseaux concurrents dont Simago. (Source : Indeed / franceimageries.fr)</div>
+    </div>
+  </div>
+</div>
+
+<!-- SYNTHÈSE CONCURRENTS -->
+<div class="section">
+  <div class="section-title">📊 Synthèse concurrentielle</div>
+  <div class="synthesis-grid">
+
+    <div class="synthesis-card red">
+      <div class="synth-competitor">FIT — France Imageries Territoires</div>
+      <span class="synth-status red">Alerte</span>
+      <div class="score-label">Score de menace</div>
+      <div class="score-bar"><div class="score-fill red" style="width:80%"></div></div>
+      <div class="score-num">4 / 5</div>
+    </div>
+
+    <div class="synthesis-card red">
+      <div class="synth-competitor">Résonance Imagerie</div>
+      <span class="synth-status red">Alerte</span>
+      <div class="score-label">Score de menace</div>
+      <div class="score-bar"><div class="score-fill red" style="width:80%"></div></div>
+      <div class="score-num">4 / 5</div>
+    </div>
+
+    <div class="synthesis-card green">
+      <div class="synth-competitor">Imapôle</div>
+      <span class="synth-status green">Stable</span>
+      <div class="score-label">Score de menace</div>
+      <div class="score-bar"><div class="score-fill green" style="width:40%"></div></div>
+      <div class="score-num">2 / 5</div>
+    </div>
+
+    <div class="synthesis-card yellow">
+      <div class="synth-competitor">Vidi</div>
+      <span class="synth-status yellow">Vigilance</span>
+      <div class="score-label">Score de menace</div>
+      <div class="score-bar"><div class="score-fill yellow" style="width:60%"></div></div>
+      <div class="score-num">3 / 5</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ANALYSE DÉTAILLÉE CONCURRENTS -->
+<div class="section">
+  <div class="section-title">🔍 Analyse détaillée des concurrents</div>
+  <div class="cc-grid">
+
+    <!-- FIT -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div class="cc-name">FIT — France Imageries Territoires</div>
+        <span class="synth-status red">Alerte — Score 4/5</span>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>182 offres d'emploi actives relevées sur Indeed au 3 avril 2026 — signal fort d'une croissance accélérée (Source : Indeed)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Intégration de Télédiag confirmée : le réseau gère à la fois des centres physiques et une activité de téléradiologie pour 150 hôpitaux, 400 000 téléinterprétations/an (Source : Docteur Imago)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Soutien du Crédit Agricole (IDIA) via augmentation de capital, aux côtés des 400 radiologues associés majoritaires — signal de solidité financière (Source : CA-IDIA)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Expansion sur le bassin niçois : intégration du Centre Médical Image-In de Monaco et rapprochement de 8 autres centres de la région (Source : Thema Radiologie)</div>
+      <div class="cc-tags">
+        <span class="cc-tag threat">Expansion nationale</span>
+        <span class="cc-tag threat">Recrutement massif</span>
+        <span class="cc-tag threat">Financement institutionnel</span>
+        <span class="cc-tag neutral">Téléradiologie intégrée</span>
+      </div>
+      <div class="cc-response-label">Angle de réponse Simago</div>
+      <div class="cc-response">Mettre en avant la qualité de l'ancrage territorial Simago et la stabilité de nos équipes médicales versus une croissance par acquisition. Valoriser notre modèle de proximité patient face à la massification FIT.</div>
+    </div>
+
+    <!-- RÉSONANCE -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div class="cc-name">Résonance Imagerie</div>
+        <span class="synth-status red">Alerte — Score 4/5</span>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Plan d'investissement de 30 millions d'euros engagé : 20 IRM nouvelle génération + 11 scanners + 10 échographes déployés d'ici mi-2026 sur 44 centres (Source : Docteur Imago)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Lancement de 2 IRM mobiles itinérantes (Pithiviers–Château-Renault et Sancerre–Lamotte-Beuvron) en 2ᵉ semestre 2025 — stratégie désert médical (Source : Thema Radiologie)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Acquisition de Cimep (Centres d'imagerie médicale de l'Est Parisien) : +12 centres, +23 radiologues, +120 salariés en Val-de-Marne (Source : CFNEWS)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Présent dans 9 départements — stratégie de maillage en zones sous-équipées, hors grandes agglomérations (Source : groupe-resonance-imagerie.fr)</div>
+      <div class="cc-tags">
+        <span class="cc-tag threat">Investissement majeur</span>
+        <span class="cc-tag threat">Croissance externe active</span>
+        <span class="cc-tag threat">IRM mobiles innovants</span>
+        <span class="cc-tag opportunity">Modèle médecin-actionnaire proche du nôtre</span>
+      </div>
+      <div class="cc-response-label">Angle de réponse Simago</div>
+      <div class="cc-response">Surveiller les zones de chevauchement géographique, notamment en Île-de-France et zones périurbaines. Anticiper une compétition accrue sur le recrutement de radiologues dans ces bassins avec le déploiement de leurs nouveaux équipements.</div>
+    </div>
+
+    <!-- IMAPÔLE -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div class="cc-name">Imapôle</div>
+        <span class="synth-status green">Stable — Score 2/5</span>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Présence concentrée sur Lyon-Villeurbanne et Décines — intégré au Médipôle Lyon-Villeurbanne, 1ᵉʳ établissement privé de santé en Auvergne-Rhône-Alpes (Source : medipolelyonvilleurbanne.fr)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Tensions réglementaires : l'Ordre des médecins a ordonné à deux reprises (fin 2023–début 2024) le retrait du groupe Imapôle (devenu ImaOne) pour entrée non conforme de fonds non médecins dans le capital (Source : CFNEWS)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Aucune actualité d'expansion ou de recrutement significatif détectée sur la période (mai 2026) — positionnement stabilisé en attente de résolution de la situation réglementaire</div>
+      <div class="cc-tags">
+        <span class="cc-tag opportunity">Tensions réglementaires = frein à l'expansion</span>
+        <span class="cc-tag neutral">Ancrage local fort</span>
+        <span class="cc-tag neutral">Hors zone de concurrence directe Simago</span>
+      </div>
+      <div class="cc-response-label">Angle de réponse Simago</div>
+      <div class="cc-response">Imapôle ne représente pas de menace directe à court terme en dehors de la région lyonnaise. À surveiller si ImaOne résout ses problèmes réglementaires et relance une stratégie nationale.</div>
+    </div>
+
+    <!-- VIDI -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div class="cc-name">Vidi</div>
+        <span class="synth-status yellow">Vigilance — Score 3/5</span>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Intégration du groupe CEI (17 médecins, sites à Rennes, Saint-Malo, Saint-Brieuc, Pontivy, Nantes) — premier groupe de médecine nucléaire intégré au réseau Vidi (Source : Thema Radiologie, 2025–2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>IMMB (Centre d'imagerie du Mont Blanc, Sallanches) rejoint Vidi — annoncé en janvier 2026, extension en Haute-Savoie (Source : vidi.fr)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Lancement de TéléVidi en partenariat avec CTM Groupe : solution de téléradiologie de proximité, réseau de 850 radiologues mobilisables (Source : Thema Radiologie)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Le réseau Vidi regroupe désormais 1 300+ radiologues, médecins nucléaires et radiothérapeutes libéraux sur 400 sites — environ 25 % des radiologues libéraux français (Source : vidi.fr)</div>
+      <div class="cc-tags">
+        <span class="cc-tag threat">Réseau massif, 25 % des libéraux</span>
+        <span class="cc-tag threat">Médecine nucléaire intégrée</span>
+        <span class="cc-tag threat">Téléradiologie active</span>
+        <span class="cc-tag opportunity">Modèle fédératif non-centralisateur</span>
+      </div>
+      <div class="cc-response-label">Angle de réponse Simago</div>
+      <div class="cc-response">Vidi gagne en surface avec la médecine nucléaire — domaine clé pour l'oncologie. Évaluer si Simago doit développer des partenariats similaires pour compléter notre offre de prise en charge. Surveiller l'attractivité de TéléVidi auprès des hôpitaux partenaires.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TENDANCES SECTORIELLES -->
+<div class="section">
+  <div class="section-title">📈 Tendances sectorielles</div>
+  <div class="tendances-grid">
+
+    <div class="tendance-card">
+      <div class="tendance-icon">💸</div>
+      <div class="tendance-title">Choc tarifaire en cours</div>
+      <div class="tendance-desc">La baisse de -10 % des forfaits techniques au 1ᵉʳ juillet 2026 (après -8 % en novembre 2025) fragilise les structures moins capitalisées. Les réseaux disposant de fonds propres solides accélèrent leurs acquisitions sur les centres en difficulté.</div>
+    </div>
+
+    <div class="tendance-card">
+      <div class="tendance-icon">🤖</div>
+      <div class="tendance-title">Course à l'équipement nouvelle génération</div>
+      <div class="tendance-desc">Résonance investit 30 M€ sur 50+ équipements. L'IA en radiologie (aide au diagnostic, lecture automatisée) devient un argument de différenciation fort auprès des radiologues recrutés et des patients exigeants.</div>
+    </div>
+
+    <div class="tendance-card">
+      <div class="tendance-icon">🌍</div>
+      <div class="tendance-title">Déserts médicaux = terrain de conquête</div>
+      <div class="tendance-desc">FIT et Résonance ciblent explicitement les zones sous-équipées (IRM mobiles, expansion périurbaine). La politique ARS de désertification médicale favorise les réseaux capables d'apporter une réponse territoriale rapide.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- RECOMMANDATIONS -->
+<div class="section">
+  <div class="section-title">✅ Recommandations actionnables</div>
+
+  <div class="reco-item">
+    <div class="reco-num">1</div>
+    <div>
+      <div class="reco-priority haute">Haute priorité</div>
+      <div class="reco-text"><strong>Action :</strong> Préparer un plan de résistance aux baisses tarifaires du 1ᵉʳ juillet 2026 — identifier les leviers d'optimisation des coûts opérationnels et revisiter la politique d'actes pour maintenir la rentabilité des centres Simago les plus exposés.</div>
+    </div>
+  </div>
+
+  <div class="reco-item">
+    <div class="reco-num">2</div>
+    <div>
+      <div class="reco-priority haute">Haute priorité</div>
+      <div class="reco-text"><strong>Action :</strong> Lancer une cartographie des zones de chevauchement avec FIT (bassin niçois, expansion nationale) et Résonance (Val-de-Marne, zones péri-urbaines) pour anticiper les tensions concurrentielles et renforcer notre présence locale avant leur arrivée.</div>
+    </div>
+  </div>
+
+  <div class="reco-item">
+    <div class="reco-num">3</div>
+    <div>
+      <div class="reco-priority moyenne">Priorité moyenne</div>
+      <div class="reco-text"><strong>Action :</strong> Évaluer une stratégie de partenariat en médecine nucléaire (oncologie) pour rivaliser avec la diversification de Vidi (intégration du groupe CEI). Un partenariat ou une alliance avec un groupe nucléaire renforcerait l'offre Simago en cancérologie.</div>
+    </div>
+  </div>
+
+  <div class="reco-item">
+    <div class="reco-num">4</div>
+    <div>
+      <div class="reco-priority info">Information</div>
+      <div class="reco-text"><strong>Action :</strong> Surveiller l'évolution réglementaire du dossier Imapôle/ImaOne (Ordre des médecins) — si la situation se débloque, ce groupe pourrait relancer une stratégie nationale et devenir un acteur à prendre en compte hors de la région lyonnaise.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="digest-footer">
+  Digest généré automatiquement le lundi 18 mai 2026 par l'agent Radar — Réseau Simago IA League.<br/>
+  Sources : Docteur Imago · Thema Radiologie · CFNEWS · FNMR · franceimageries.fr · groupe-resonance-imagerie.fr · vidi.fr · Indeed · CA-IDIA · Pappers.fr<br/>
+  <em>Fait sourcé / Interprétation / Recommandation sont clairement distingués dans l'analyse. Les informations sont datées. Aucun concurrent n'est dénigré.</em>
+</div>
+
+</body>
+</html>

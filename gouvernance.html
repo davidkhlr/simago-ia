@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simago IA League — Comment ça marche techniquement</title>
+<meta name="description" content="Gouvernance, données et sécurité de Simago IA League — pour les décideurs et l'IT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#00A69C;--green-dark:#006C5F;--green-light:#80D2CD;--beige:#F9F4E8;--ink:#1a2e2b;--mid:#3d5a56;--line:#e3ded2;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Epilogue','Segoe UI',system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.55;}
+  .page{max-width:900px;margin:0 auto;}
+  header{background:linear-gradient(135deg,#0a2e28 0%,var(--green-dark) 100%);color:#fff;padding:28px 36px;}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green-light);font-weight:700;margin-bottom:8px;}
+  header h1{font-size:1.55rem;font-weight:800;letter-spacing:-.02em;}
+  header p{color:rgba(255,255,255,.72);font-size:.93rem;margin-top:6px;max-width:680px;}
+  .body{padding:24px 36px 36px;}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:.8rem;color:var(--mid);margin-bottom:24px;}
+  .chip{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:.03em;}
+  .ok{background:rgba(0,166,156,.14);color:var(--green-dark);}
+  .todo{background:rgba(214,158,46,.16);color:#9a6a00;}
+  h2{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:700;margin:26px 0 12px;display:flex;align-items:center;gap:10px;}
+  h2::after{content:'';flex:1;height:1px;background:var(--line);}
+  .qa{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .q{font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .a{font-size:.92rem;color:var(--mid);}
+  .a strong{color:var(--ink);}
+  footer{padding:18px 36px 28px;border-top:1px solid var(--line);font-size:.82rem;color:var(--mid);line-height:1.6;}
+  footer b{color:var(--green-dark);}
+  @media(max-width:600px){.body,header,footer{padding-left:18px;padding-right:18px;}.q{flex-direction:column;}}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="eyebrow">Simago IA League · Pour les décideurs &amp; l'IT</div>
+    <h1>Comment ça marche techniquement</h1>
+    <p>Transparence sur le fonctionnement : où vont les données, ce qui est permis ou interdit, qui gouverne, et comment la conformité santé est tenue.</p>
+  </header>
+  <div class="body">
+    <div class="legend">
+      <span><span class="chip ok">En place</span> opérationnel aujourd'hui</span>
+      <span><span class="chip todo">À formaliser</span> en cours / à cadrer avec la DSI</span>
+    </div>
+
+    <h2>Données</h2>
+    <div class="qa">
+      <div class="q">Où sont stockées les données ? <span class="chip ok">En place</span></div>
+      <div class="a">Les échanges se font dans <strong>Claude (Cowork)</strong>, dont l'historique de conversation est stocké <strong>en local sur le poste de chaque utilisateur</strong> — pas de base centralisée. Le dashboard mémorise seulement des préférences (favoris, historique) dans le navigateur. Le traitement des requêtes passe par le modèle Anthropic. <em>(Hébergement du dashboard/landing : à formaliser — voir ci-dessous.)</em></div>
+    </div>
+    <div class="qa">
+      <div class="q">Quelles données peut-on envoyer dans Claude ? <span class="chip ok">En place</span></div>
+      <div class="a">Du contenu métier <strong>non sensible</strong> : marketing &amp; communication, veille publique, reporting interne agrégé, documents internes non confidentiels.</div>
+    </div>
+    <div class="qa">
+      <div class="q">Quelles données sont interdites ? <span class="chip ok">En place</span></div>
+      <div class="a"><strong>Aucune donnée patient ni donnée de santé identifiante</strong> — règle n°1, par conception. Ni données nominatives sensibles, ni identifiants/secrets techniques. <em>(Liste détaillée à compléter avec la DSI.)</em></div>
+    </div>
+    <div class="qa">
+      <div class="q">Quels connecteurs sont actifs ? <span class="chip ok">En place</span></div>
+      <div class="a"><strong>Canva</strong> (newsletter mensuelle). Tout nouveau connecteur est activé au cas par cas, sous validation.</div>
+    </div>
+
+    <h2>Gouvernance</h2>
+    <div class="qa">
+      <div class="q">Qui administre les agents ? <span class="chip ok">En place</span></div>
+      <div class="a"><strong>David Kohler</strong> (porteur du projet) avec la <strong>Direction IA</strong> (Thibault Depardon). Le plugin est distribué aux équipes via la <strong>marketplace d'organisation</strong> (gérée par un Owner du plan).</div>
+    </div>
+    <div class="qa">
+      <div class="q">Qui valide les prompts système et les références ? <span class="chip ok">En place</span></div>
+      <div class="a">David + la Direction IA. Les références (charte, garde-fous santé, KPIs, audiences, concurrents) sont <strong>centralisées en source unique et versionnées</strong> : toute modification passe par cette validation avant diffusion.</div>
+    </div>
+
+    <h2>Conformité &amp; sécurité</h2>
+    <div class="qa">
+      <div class="q">Comment est géré le RGPD / la santé ? <span class="chip todo">À formaliser</span></div>
+      <div class="a">Par conception, <strong>aucune donnée patient n'entre dans la plateforme</strong>, et les 4 garde-fous santé s'appliquent. Une <strong>revue formelle avec la DSI / le DPO</strong> reste à formaliser — elle est prévue dans le cadre du passage à l'échelle.</div>
+    </div>
+    <div class="qa">
+      <div class="q">Comment sont tracées les actions ? <span class="chip todo">À formaliser</span></div>
+      <div class="a">Aujourd'hui, le garde-fou principal est la <strong>relecture humaine systématique</strong> avant toute diffusion. Une <strong>traçabilité technique</strong> (journal d'événements Cowork via OpenTelemetry vers un outil de sécurité) est <strong>à décider avec la DSI</strong> — sur la roadmap.</div>
+    </div>
+    <div class="qa">
+      <div class="q">Que se passe-t-il en cas d'erreur de l'IA ? <span class="chip ok">En place</span></div>
+      <div class="a"><strong>L'IA propose, l'humain valide</strong> : rien ne sort sans relecture (agent Garde-fous + œil humain). En cas d'erreur détectée : correction immédiate et remontée au porteur (David / Direction IA). <strong>Aucune décision stratégique n'est déléguée à l'IA.</strong></div>
+    </div>
+    <div class="qa">
+      <div class="q">Où est hébergée la plateforme ? <span class="chip todo">À formaliser</span></div>
+      <div class="a">Le choix entre <strong>SharePoint interne</strong> (accès contrôlé) et un hébergement web est <strong>à arbitrer avec la DSI</strong>. Aucune donnée sensible n'y transite : la plateforme est un point d'entrée (catalogue + lancement d'agents), pas un stockage de données métier.</div>
+    </div>
+  </div>
+  <footer>
+    <b>Les 4 garde-fous santé, non négociables :</b> aucune donnée patient · aucun fait médical sans source validée · aucun contenu externe sans relecture humaine · aucune décision stratégique déléguée à l'IA.
+    <br><br>Simago IA League · David Kohler · david.kohler@groupe-simago.com
+  </footer>
+</div>
+</body>
+</html>

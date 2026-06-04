@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digest Veille Concurrentielle — Semaine du 26 mai au 1er juin 2026</title>
+  <style>
+    :root {
+      --primary: #1a3a5c;
+      --primary-light: #2563a8;
+      --accent: #e8f0f8;
+      --green: #16a34a;
+      --green-bg: #dcfce7;
+      --yellow: #ca8a04;
+      --yellow-bg: #fef9c3;
+      --red: #dc2626;
+      --red-bg: #fee2e2;
+      --gray: #6b7280;
+      --gray-light: #f3f4f6;
+      --border: #e5e7eb;
+      --text: #111827;
+      --text-light: #374151;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f0f4f8;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ─── Header ─── */
+    .header {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2563a8 100%);
+      color: white;
+      padding: 36px 40px;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .header-logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .header-badge {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .header-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .header-subtitle {
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 28px;
+    }
+    .header-stats {
+      display: flex;
+      gap: 32px;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .stat-num.red { color: #fca5a5; }
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+
+    /* ─── Container ─── */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    /* ─── Section Title ─── */
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gray);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── Alert Banners ─── */
+    .alert-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border-left: 4px solid;
+    }
+    .alert-banner.red {
+      background: var(--red-bg);
+      border-color: var(--red);
+    }
+    .alert-banner.yellow {
+      background: var(--yellow-bg);
+      border-color: var(--yellow);
+    }
+    .alert-banner.green {
+      background: var(--green-bg);
+      border-color: var(--green);
+    }
+    .alert-icon { font-size: 22px; flex-shrink: 0; }
+    .alert-title { font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+    .alert-desc { font-size: 13px; color: var(--text-light); }
+
+    /* ─── Synthèse Grid ─── */
+    .synthese-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 600px) { .synthese-grid { grid-template-columns: 1fr; } }
+
+    .cc-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    .cc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .cc-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--primary);
+    }
+    .cc-desc { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+    .status-badge {
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .status-badge.green { background: var(--green-bg); color: var(--green); }
+    .status-badge.yellow { background: var(--yellow-bg); color: var(--yellow); }
+    .status-badge.red { background: var(--red-bg); color: var(--red); }
+
+    .threat-label {
+      font-size: 11px;
+      color: var(--gray);
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .threat-bar-bg {
+      height: 6px;
+      background: var(--gray-light);
+      border-radius: 3px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .threat-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+    .threat-bar-fill.green { background: var(--green); }
+    .threat-bar-fill.yellow { background: var(--yellow); }
+    .threat-bar-fill.red { background: var(--red); }
+
+    .cc-news-item {
+      font-size: 12.5px;
+      color: var(--text-light);
+      margin-bottom: 5px;
+      display: flex;
+      gap: 6px;
+    }
+    .cc-bullet { color: var(--primary-light); font-weight: 700; flex-shrink: 0; }
+
+    .cc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 10px; }
+    .cc-tag {
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .cc-tag.threat { background: var(--red-bg); color: var(--red); }
+    .cc-tag.opportunity { background: var(--green-bg); color: var(--green); }
+    .cc-tag.neutral { background: var(--gray-light); color: var(--gray); }
+
+    .cc-response {
+      font-size: 12px;
+      color: var(--primary);
+      background: var(--accent);
+      border-radius: 8px;
+      padding: 10px 12px;
+      border-left: 3px solid var(--primary-light);
+      margin-top: 8px;
+      font-style: italic;
+    }
+    .cc-response-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary-light);
+      margin-bottom: 4px;
+      font-style: normal;
+    }
+
+    /* ─── Tendances ─── */
+    .tendances-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 700px) { .tendances-grid { grid-template-columns: 1fr; } }
+
+    .tendance-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .tendance-icon { font-size: 28px; margin-bottom: 10px; }
+    .tendance-title { font-weight: 700; font-size: 13px; color: var(--primary); margin-bottom: 6px; }
+    .tendance-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+    /* ─── Recommandations ─── */
+    .recos-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .reco-item {
+      display: flex;
+      gap: 16px;
+      background: white;
+      border-radius: 12px;
+      padding: 18px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .reco-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .reco-priority {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .reco-priority.haute { background: var(--red-bg); color: var(--red); }
+    .reco-priority.moyenne { background: var(--yellow-bg); color: var(--yellow); }
+    .reco-priority.info { background: var(--accent); color: var(--primary-light); }
+    .reco-text { font-size: 13px; color: var(--text-light); }
+    .reco-text strong { color: var(--text); }
+
+    /* ─── Footer ─── */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 11px;
+      color: var(--gray);
+      border-top: 1px solid var(--border);
+      background: white;
+    }
+    .footer strong { color: var(--primary); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ HEADER ═══ -->
+<div class="header">
+  <div class="header-top">
+    <div class="header-logo">🩻 Réseau Simago — Radar Concurrentiel</div>
+    <div class="header-badge">🤖 Généré automatiquement</div>
+  </div>
+  <div class="header-title">Digest de Veille Hebdomadaire</div>
+  <div class="header-subtitle">Semaine du 26 mai au 1er juin 2026 &nbsp;·&nbsp; Imagerie médicale France</div>
+  <div class="header-stats">
+    <div class="stat-item">
+      <div class="stat-num red">2</div>
+      <div class="stat-label">Alertes</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">16</div>
+      <div class="stat-label">Actualités</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Recommandations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Concurrents</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ═══ ALERTES ═══ -->
+  <div class="section-title">🚨 Alertes de la semaine</div>
+  <div style="margin-bottom: 32px;">
+
+    <div class="alert-banner red">
+      <div class="alert-icon">🔴</div>
+      <div>
+        <div class="alert-title">Résonance Imagerie — Escalade au-delà de l'Île-de-France</div>
+        <div class="alert-desc">Acquisition de Cimep (12 centres, ~120 salariés, Val-de-Marne, +20 M€ de CA) et rapprochement avec le Centre du Galilée (8 centres, Seine-et-Marne) : le groupe atteint désormais 56 centres sur 4 régions, ~10ᵉ acquisition depuis l'entrée d'Andera Partners en 2022. Dynamique de consolidation à surveiller de très près.</div>
+      </div>
+    </div>
+
+    <div class="alert-banner yellow">
+      <div class="alert-icon">⚠️</div>
+      <div>
+        <div class="alert-title">Vidi — Entrée dans la médecine nucléaire + outils numériques propriétaires</div>
+        <div class="alert-desc">Vidi intègre son premier groupe de médecine nucléaire (CEI, 17 médecins, Bretagne / Pays de la Loire) et déploie CRVidi, son compte rendu structuré en marque blanche. Élargissement du périmètre concurrentiel au-delà de la radiologie et renforcement du verrou technologique.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ SYNTHÈSE CONCURRENTS ═══ -->
+  <div class="section-title">📊 Synthèse concurrentielle</div>
+  <div class="synthese-grid">
+
+    <!-- FIT -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div>
+          <div class="cc-name">FIT — France Imageries Territoires</div>
+          <div class="cc-desc">Réseau national · 400+ radiologues associés · Télé-radiologie</div>
+        </div>
+        <span class="status-badge yellow">Vigilance</span>
+      </div>
+      <div class="threat-label">
+        <span>Score de menace</span>
+        <span><strong>3</strong>/5</span>
+      </div>
+      <div class="threat-bar-bg">
+        <div class="threat-bar-fill yellow" style="width:60%"></div>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Arrivée de trois nouveaux groupes de radiologues au sein du réseau FIT (Thema Radiologie, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Nouvelle augmentation de capital soutenue par le groupe Crédit Agricole (IDIA CI et SOCADIF), aux côtés des 400+ radiologues associés majoritaires (IDIA Capital Investissement, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Intégration de TéléDiag pour structurer la couverture de télé-radiologie nationale (Docteur Imago, 2025-2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Mobilisation institutionnelle maintenue contre les baisses tarifaires PLFSS 2026 (webinaire du 12 janv. 2026, recours) (Thema Radiologie, 2026)</div>
+      <div class="cc-tags">
+        <span class="cc-tag threat">Croissance par agrégation</span>
+        <span class="cc-tag threat">Adossement bancaire</span>
+        <span class="cc-tag neutral">Lobbying institutionnel</span>
+      </div>
+      <div class="cc-response">
+        <div class="cc-response-label">Angle de réponse Simago</div>
+        FIT grossit par agrégation de groupes indépendants — trois nouveaux ce trimestre — adossé au Crédit Agricole. Simago peut se différencier en démontrant une intégration réelle (SI commun, parcours patient fluide) face à une fédération de cabinets, et doit surveiller les zones d'implantation des nouveaux groupes.
+      </div>
+    </div>
+
+    <!-- Résonance -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div>
+          <div class="cc-name">Résonance Imagerie</div>
+          <div class="cc-desc">56 centres · 4 régions · 800 salariés · 120 radiologues · +150 M€ CA</div>
+        </div>
+        <span class="status-badge red">Alerte</span>
+      </div>
+      <div class="threat-label">
+        <span>Score de menace</span>
+        <span><strong>4</strong>/5</span>
+      </div>
+      <div class="threat-bar-bg">
+        <div class="threat-bar-fill red" style="width:80%"></div>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Acquisition de Cimep (Centres d'Imagerie Médicale de l'Est Parisien) : 12 centres, 23 radiologues et ~120 salariés, principalement dans le Val-de-Marne ; ~+20 M€ de CA, portant le groupe au-delà de 150 M€ (CFNEWS, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Le groupe atteint 56 centres répartis sur 4 régions — environ 10ᵉ acquisition depuis l'entrée d'Andera Partners en 2022 (CFNEWS, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Rapprochement avec le Centre d'Imagerie Médicale du Galilée (8 centres) pour constituer un acteur de référence en Seine-et-Marne (Capstone Finance / Fusacq, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Poursuite du plan d'équipement de 30 M€ (2025-2026) : 20 IRM nouvelle génération avec IA, 11 scanners, échographes et tables radio (Docteur Imago, 2026)</div>
+      <div class="cc-tags">
+        <span class="cc-tag threat">Croissance externe accélérée</span>
+        <span class="cc-tag threat">Expansion multi-régionale</span>
+        <span class="cc-tag threat">Adossement Andera Partners</span>
+      </div>
+      <div class="cc-response">
+        <div class="cc-response-label">Angle de réponse Simago</div>
+        Résonance franchit un cap en sortant de l'Île-de-France (4 régions désormais) avec ~10 acquisitions en trois ans. Simago doit cartographier les zones de chevauchement à 12 mois et sécuriser ses relations prescripteurs locaux, en valorisant la gouvernance médicale et la stabilité des équipes — talons d'Achille des modèles de consolidation rapide.
+      </div>
+    </div>
+
+    <!-- Imapôle -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div>
+          <div class="cc-name">Imapôle</div>
+          <div class="cc-desc">Ancrage régional · Lyon-Villeurbanne / Décines · Médipôle</div>
+        </div>
+        <span class="status-badge green">Stable</span>
+      </div>
+      <div class="threat-label">
+        <span>Score de menace</span>
+        <span><strong>2</strong>/5</span>
+      </div>
+      <div class="threat-bar-bg">
+        <div class="threat-bar-fill green" style="width:40%"></div>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Déploiement de l'IA diagnostique : partenariat avec CoLumbo AI (aide à l'analyse) et seconde lecture des mammographies par iCAD ProFound AI (site officiel Imapôle, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Adoption de la solution Imactis pour le guidage en radiologie interventionnelle (site officiel Imapôle, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Positionnement comme service d'imagerie du Médipôle Lyon-Villeurbanne, 1er établissement privé d'Auvergne-Rhône-Alpes (site officiel, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Aucune annonce de croissance externe ou d'expansion hors région Rhône en mai 2026 (veille sites officiels, mai 2026)</div>
+      <div class="cc-tags">
+        <span class="cc-tag opportunity">Virage IA diagnostique</span>
+        <span class="cc-tag neutral">Ancrage régional fort</span>
+        <span class="cc-tag neutral">Développement géographique modéré</span>
+      </div>
+      <div class="cc-response">
+        <div class="cc-response-label">Angle de réponse Simago</div>
+        Imapôle reste concentré sur Lyon mais accélère sur l'IA diagnostique (CoLumbo, iCAD ProFound). Signal que l'IA d'aide au diagnostic devient un standard concurrentiel, y compris chez les acteurs régionaux non expansionnistes. Simago gagnerait à structurer et communiquer sa feuille de route IA pour ne pas paraître en retard.
+      </div>
+    </div>
+
+    <!-- Vidi -->
+    <div class="cc-card">
+      <div class="cc-header">
+        <div>
+          <div class="cc-name">Vidi</div>
+          <div class="cc-desc">75 groupes · 1 250+ radiologues · 400+ sites · Digital-first</div>
+        </div>
+        <span class="status-badge yellow">Vigilance</span>
+      </div>
+      <div class="threat-label">
+        <span>Score de menace</span>
+        <span><strong>3</strong>/5</span>
+      </div>
+      <div class="threat-bar-bg">
+        <div class="threat-bar-fill yellow" style="width:60%"></div>
+      </div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Intégration de son premier groupe de médecine nucléaire, le groupe CEI (17 médecins ; Rennes, Saint-Malo, Saint-Brieuc, Pontivy, Nantes) — élargissement au-delà de la radiologie et de la radiothérapie (Thema Radiologie, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Lancement de CRVidi, compte rendu structuré en marque blanche (éditeur Doctreen) pour les membres du réseau (Thema Radiologie, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Signature d'un partenariat national avec la Fédération Addiction pour le dépistage précoce du cancer du poumon (Vidi.fr, 2026)</div>
+      <div class="cc-news-item"><span class="cc-bullet">•</span>Poursuite du maillage : nouveaux centres rejoignant le réseau (ex. Sénologie &amp; Radiologie Les Martégaux, Marseille) (Vidi.fr, 2026)</div>
+      <div class="cc-tags">
+        <span class="cc-tag threat">Élargissement médecine nucléaire</span>
+        <span class="cc-tag threat">Outils numériques propriétaires</span>
+        <span class="cc-tag opportunity">Dépistage / prévention</span>
+      </div>
+      <div class="cc-response">
+        <div class="cc-response-label">Angle de réponse Simago</div>
+        Vidi élargit son périmètre (médecine nucléaire) et renforce son SI propriétaire (CRVidi), consolidant un modèle « réseau intégré + numérique ». Simago doit clarifier sa proposition numérique (CR structuré, télé-radiologie) pour ne pas céder le terrain de l'innovation perçue auprès des prescripteurs.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ TENDANCES ═══ -->
+  <div class="section-title">📈 Tendances sectorielles</div>
+  <div class="tendances-grid">
+
+    <div class="tendance-card">
+      <div class="tendance-icon">💶</div>
+      <div class="tendance-title">Calendrier des baisses tarifaires confirmé</div>
+      <div class="tendance-desc">La décision UNCAM du 14 oct. 2025 enclenche une baisse des forfaits techniques en trois étapes, jusqu'à −12,6 % début 2027. Selon la FNMR, 3 cabinets sur 4 anticipent un allongement des délais et 40 % une réduction de personnel. Pression maximale sur les acteurs peu capitalisés.</div>
+    </div>
+
+    <div class="tendance-card">
+      <div class="tendance-icon">🤖</div>
+      <div class="tendance-title">L'IA diagnostique se banalise</div>
+      <div class="tendance-desc">De l'Académie de médecine (rapport du 20 janv. 2026) à la SFR (enquête nationale, ECR mars 2026) jusqu'aux acteurs régionaux comme Imapôle (CoLumbo, iCAD), l'IA d'aide au diagnostic devient un standard. La SFR rappelle la « garantie humaine » du radiologue.</div>
+    </div>
+
+    <div class="tendance-card">
+      <div class="tendance-icon">🏗️</div>
+      <div class="tendance-title">Consolidation multi-régions et multi-spécialités</div>
+      <div class="tendance-desc">Résonance (4 régions) et Vidi (médecine nucléaire, 400 sites) élargissent simultanément périmètre géographique et palette de spécialités. La taille critique et l'intégration des systèmes d'information deviennent des enjeux de différenciation.</div>
+    </div>
+
+  </div>
+
+  <!-- ═══ RECOMMANDATIONS ═══ -->
+  <div class="section-title">🎯 Recommandations actionnables</div>
+  <div class="recos-list">
+
+    <div class="reco-item">
+      <div class="reco-num">1</div>
+      <div>
+        <div class="reco-priority haute">Haute priorité</div>
+        <div class="reco-text"><strong>Cartographier l'empreinte multi-régions de Résonance :</strong> à la suite de l'acquisition de Cimep (Val-de-Marne) et du rapprochement avec le Galilée (Seine-et-Marne), identifier sous 30 jours les zones de chevauchement Simago / Résonance et sécuriser les relations prescripteurs et l'adressage avant toute approche du groupe. La sortie d'Île-de-France change l'échelle de la menace.</div>
+      </div>
+    </div>
+
+    <div class="reco-item">
+      <div class="reco-num">2</div>
+      <div>
+        <div class="reco-priority haute">Haute priorité</div>
+        <div class="reco-text"><strong>Formaliser et communiquer la feuille de route IA de Simago :</strong> l'IA diagnostique se banalise (Imapôle déploie CoLumbo et iCAD ProFound, la SFR et l'Académie de médecine cadrent le sujet). Définir 2-3 cas d'usage concrets (2ᵉ lecture mammographie, priorisation des urgences, réduction des délais) et les valoriser auprès des prescripteurs, en s'appuyant sur le principe de « garantie humaine » du radiologue porté par la SFR.</div>
+      </div>
+    </div>
+
+    <div class="reco-item">
+      <div class="reco-num">3</div>
+      <div>
+        <div class="reco-priority moyenne">Priorité moyenne</div>
+        <div class="reco-text"><strong>Préparer une brique « compte rendu structuré / numérique » :</strong> Vidi déploie CRVidi (CR structuré en marque blanche) et étend son SI propriétaire. Évaluer une solution équivalente pour Simago afin de ne pas accuser de retard perçu sur l'expérience prescripteur et la qualité des comptes rendus.</div>
+      </div>
+    </div>
+
+    <div class="reco-item">
+      <div class="reco-num">4</div>
+      <div>
+        <div class="reco-priority info">Information</div>
+        <div class="reco-text"><strong>Exploiter le contexte tarifaire dans la communication institutionnelle :</strong> avec un calendrier de baisses désormais confirmé (−12,6 % d'ici début 2027), positionner Simago comme un réseau qui préserve qualité et délais malgré la pression, message à relayer via la FNMR, la SFR et les canaux prescripteurs. Surveiller en parallèle l'arrivée des trois nouveaux groupes de radiologues au sein de FIT.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <strong>Réseau Simago</strong> — Digest de veille concurrentielle généré automatiquement le <strong>lundi 1er juin 2026</strong><br>
+  Sources : CFNEWS · Docteur Imago · Thema Radiologie · Fusacq / Capstone Finance · IDIA Capital Investissement · FNMR · SFR (radiologie.fr) · Académie nationale de médecine · Sites officiels des groupes (groupe-resonance-imagerie.fr, vidi.fr, imapolelyonvilleurbanne.fr, franceimageries.fr)<br>
+  <em>Les analyses « Angle de réponse Simago », tendances et recommandations sont des interprétations de l'agent Radar et non des faits sourcés directs. Aucune information ne vise à dénigrer un concurrent. Document à usage interne uniquement.</em>
+</div>
+
+</body>
+</html>
